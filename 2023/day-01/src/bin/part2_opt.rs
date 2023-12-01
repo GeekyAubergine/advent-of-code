@@ -1,10 +1,6 @@
 use day_01::part2::process;
 use miette::Context;
 
-#[cfg(feature = "dhat-heap")]
-#[global_allocator]
-static ALLOC: dhat::Alloc = dhat::Alloc;
-
 #[tracing::instrument]
 fn main() -> miette::Result<()> {
     #[cfg(feature = "dhat-heap")]

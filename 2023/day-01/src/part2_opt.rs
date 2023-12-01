@@ -1,5 +1,3 @@
-use rayon::prelude::*;
-
 use crate::{error::Error, prelude::*};
 
 #[tracing::instrument]
