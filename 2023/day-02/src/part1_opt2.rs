@@ -13,22 +13,27 @@ enum GameResult {
     Impossible,
 }
 
-#[tracing::instrument]
-fn parse_hand_color(input: &str, bag: &Bag) -> Result<bool> {
-    let count_chars = input
-        .chars()
-        .take_while(|c| c.is_ascii_digit())
-        .collect::<String>();
+enum HandResult {
+    Possible { length: usize },
+    Impossible,
+}
 
+#[tracing::instrument]
+fn parse_hand_color(input: &str, bag: &Bag) -> Result<HandResult> {
+    let mut count_chars: String = String::new();
+
+    for c in input[0..5].chars() {
+        if c.is_ascii_digit() {
+            count_chars.push(c);
+        } else {
+            break;
+        }
+    }
     let color_start = count_chars.len() + 1;
 
     let count = count_chars
         .parse::<u8>()
         .map_err(|_| Error::CouldNotParseCount(input.to_string()))?;
-
-    if count > bag.red || count > bag.green || count > bag.blue {
-        return Ok(false);
-    }
 
     let color = input
         .get(color_start..color_start + 1)
@@ -37,43 +42,46 @@ fn parse_hand_color(input: &str, bag: &Bag) -> Result<bool> {
     match color {
         "r" => {
             if count > bag.red {
-                return Ok(false);
+                return Ok(HandResult::Impossible);
+            } else {
+                return Ok(HandResult::Possible {
+                    length: color_start + 3,
+                });
             }
         }
         "g" => {
             if count > bag.green {
-                return Ok(false);
+                return Ok(HandResult::Impossible);
+            } else {
+                return Ok(HandResult::Possible {
+                    length: color_start + 5,
+                });
             }
         }
         "b" => {
             if count > bag.blue {
-                return Ok(false);
+                return Ok(HandResult::Impossible);
+            } else {
+                return Ok(HandResult::Possible {
+                    length: color_start + 4,
+                });
             }
         }
         _ => return Err(Error::UnknownColor(color.to_string())),
     }
-
-    Ok(true)
-}
-
-#[tracing::instrument]
-fn parse_hand(input: &str, bag: &Bag) -> Result<bool> {
-    for card in input.split(',') {
-        if !parse_hand_color(card.trim(), bag)? {
-            return Ok(false);
-        }
-    }
-
-    Ok(true)
 }
 
 #[tracing::instrument]
 fn parse_game(input: &str, bag: &Bag) -> Result<GameResult> {
-    let id_chars: String = input
-        .chars()
-        .skip(5)
-        .take_while(|c| c.is_ascii_digit())
-        .collect();
+    let mut id_chars: String = String::new();
+
+    for c in input[5..10].chars() {
+        if c.is_ascii_digit() {
+            id_chars.push(c);
+        } else {
+            break;
+        }
+    }
 
     let hands_start = 5 + id_chars.len() + 2;
 
@@ -81,11 +89,20 @@ fn parse_game(input: &str, bag: &Bag) -> Result<GameResult> {
         .parse::<u32>()
         .map_err(|_| Error::CouldNotParseGameId(id_chars))?;
 
-    let hands_text = input[hands_start..].trim();
+    let mut index = hands_start;
 
-    for hand in hands_text.split(';') {
-        if !parse_hand(hand, bag)? {
-            return Ok(GameResult::Impossible);
+    while index < input.len() {
+        let hand = &input[index..];
+
+        let hand_result = parse_hand_color(hand, bag)?;
+
+        match hand_result {
+            HandResult::Possible { length } => {
+                index += length + 2;
+            }
+            HandResult::Impossible { .. } => {
+                return Ok(GameResult::Impossible);
+            }
         }
     }
 
@@ -131,8 +148,6 @@ mod tests {
                 blue: 14,
             },
         );
-
-        assert!(game.is_ok());
 
         let game = game?;
 
