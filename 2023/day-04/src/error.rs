@@ -15,4 +15,8 @@ pub enum Error {
     CannotFindScratchedNumbers { line: usize },
     #[error("Could not parse number from {0}")]
     CouldNotParseNumber(String),
+    #[error("Could not find card numer {0}")]
+    CannotFindCardNumber(String),
+    #[error("Could not parse card number {0}")]
+    CouldNotParseCardNumber(String)
 }
