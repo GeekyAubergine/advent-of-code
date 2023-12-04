@@ -21,7 +21,8 @@ miette = { version = "5.10", features = ["fancy"] }
 thiserror = "1.0.50"
 dhat = "0.3.2"
 regex = "1.10.2"
-pretty_assertions = "0.1.0"
+pretty_assertions = "1.4.0"
+memoize = "0.4.1"
 
 [profile.flamegraph]
 inherits = "release"
