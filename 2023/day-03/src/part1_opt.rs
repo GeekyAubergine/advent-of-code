@@ -1,22 +1,20 @@
-use rayon::prelude::*;
-
 #[derive(Debug, Clone, PartialEq, Eq)]
 struct Data {
-    is_symbol: Vec<bool>,
+    symbol_map: Vec<bool>,
     width: usize,
 }
 
 impl Data {
     #[tracing::instrument]
     fn new(input: &String) -> Self {
-        let is_symbol = input
+        let symbol_map = input
             .lines()
             .flat_map(|line| line.chars())
             .map(|c| is_symbol(Some(c)))
             .collect::<Vec<_>>();
         let width = input.lines().next().unwrap().len();
 
-        Self { width, is_symbol }
+        Self { width, symbol_map }
     }
 
     #[tracing::instrument]
@@ -25,7 +23,7 @@ impl Data {
             return false;
         }
 
-        match self.is_symbol.get(y as usize * self.width + x as usize) {
+        match self.symbol_map.get(y as usize * self.width + x as usize) {
             Some(v) => *v,
             None => false,
         }
