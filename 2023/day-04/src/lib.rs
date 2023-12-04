@@ -1,3 +1,5 @@
+#![feature(iter_map_windows)]
+
 pub mod error;
 pub mod prelude;
 

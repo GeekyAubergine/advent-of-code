@@ -5,13 +5,13 @@ pub fn score_line(line: &str) -> Result<u32> {
     let numbers = line
         .split(':')
         .last()
-        .ok_or_else(|| Error::CannotFindNumbers { line: 0 })?;
+        .ok_or(Error::CannotFindNumbers { line: 0 })?;
 
     let mut numbers = numbers.split('|');
 
     let winning_numbers = numbers
         .next()
-        .ok_or_else(|| Error::CannotFindWinningNumbers { line: 0 })?
+        .ok_or(Error::CannotFindWinningNumbers { line: 0 })?
         .split(' ')
         .filter(|n| !n.is_empty())
         .map(|n| {
@@ -22,7 +22,7 @@ pub fn score_line(line: &str) -> Result<u32> {
 
     let scratch_numbers = numbers
         .last()
-        .ok_or_else(|| Error::CannotFindScratchedNumbers { line: 0 })?
+        .ok_or(Error::CannotFindScratchedNumbers { line: 0 })?
         .split(' ')
         .filter(|n| !n.is_empty())
         .map(|n| {
