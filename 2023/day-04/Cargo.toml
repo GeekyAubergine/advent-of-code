@@ -1,5 +1,5 @@
 [package]
-name = "{{project-name}}"
+name = "day-04"
 version = "0.1.0"
 edition = "2021"
 
@@ -20,7 +20,7 @@ divan = { workspace = true }
 pretty_assertions = { workspace = true }
 
 [[bench]]
-name = "{{project-name}}"
+name = "day-04"
 path = "benches/benchmarks.rs"
 harness = false
 
