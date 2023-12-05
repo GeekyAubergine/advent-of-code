@@ -1,0 +1,2 @@
+day_05    fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1  
