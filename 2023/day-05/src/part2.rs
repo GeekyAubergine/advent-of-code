@@ -78,7 +78,6 @@ impl Seeds {
         Ok((Seeds { seeds }, input))
     }
 }
-
 #[derive(Debug, Clone, PartialEq, Eq)]
 struct MapRange {
     destination_start: u64,

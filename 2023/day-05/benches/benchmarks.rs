@@ -21,18 +21,18 @@ fn part1() {
 //     .unwrap();
 // }
 
-// #[divan::bench]
-// fn part1_opt() {
-//     part1_opt::process(divan::black_box(include_str!(
-//         "../input1.txt",
-//     )))
-//     .unwrap();
-// }
+#[divan::bench]
+fn part1_opt() {
+    part1_opt::process(divan::black_box(include_str!(
+        "../input1.txt",
+    )))
+    .unwrap();
+}
 
-// #[divan::bench]
-// fn part2_opt() {
-//     part2_opt::process(divan::black_box(include_str!(
-//         "../input2.txt",
-//     )))
-//     .unwrap();
-// }
+#[divan::bench]
+fn part2_opt() {
+    part2_opt::process(divan::black_box(include_str!(
+        "../input2.txt",
+    )))
+    .unwrap();
+}
