@@ -44,7 +44,7 @@ type ParserOutput<T> = (T, Input);
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 struct Seeds {
-    seeds: Vec<u64>,
+    seeds: Vec<u32>,
 }
 
 impl Seeds {
@@ -62,7 +62,7 @@ impl Seeds {
             .ok_or_else(|| Error::CannotFindSeedsHeader)?
             .split(' ')
             .filter(|s| !s.is_empty())
-            .map(|s| s.trim().parse::<u64>().map_err(Error::CouldNotParseNumber))
+            .map(|s| s.trim().parse::<u32>().map_err(Error::CouldNotParseNumber))
             .collect::<Result<Vec<_>>>()?;
 
         Ok((Seeds { seeds }, input))
@@ -70,49 +70,14 @@ impl Seeds {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-struct MapRange {
-    destination_start: u64,
-    source_start: u64,
-    range: u64,
-}
-
-impl MapRange {
-    #[tracing::instrument]
-    fn new(destination_start: u64, source_start: u64, range: u64) -> Result<MapRange> {
-        Ok(MapRange {
-            destination_start,
-            source_start,
-            range,
-        })
-    }
-
-    #[tracing::instrument]
-    fn contains_value(&self, value: u64) -> bool {
-        value >= self.source_start && value < self.source_start + self.range
-    }
-
-    #[tracing::instrument]
-    fn map_value(&self, value: u64) -> u64 {
-        if !self.contains_value(value) {
-            return value;
-        }
-
-        let offset = value - self.source_start;
-        let destination = self.destination_start + offset;
-
-        destination
-    }
-}
-
-#[derive(Debug, Clone, PartialEq, Eq)]
 struct Map {
-    mapped_values: Vec<MapRange>,
+    mapped_values: HashMap<u32, u32>,
 }
 
 impl Map {
     #[tracing::instrument]
     fn from_input(mut input: Input) -> Result<ParserOutput<Map>> {
-        let mut mapped_values = Vec::new();
+        let mut mapped_values = HashMap::new();
 
         if !input.next()?.ends_with("map:") {
             return Err(Error::CannotFindMapHeader);
@@ -125,10 +90,12 @@ impl Map {
 
             let line = input.next()?;
 
+            println!("line: {}", line);
+
             let numbers = line
                 .split(' ')
                 .filter(|s| !s.is_empty())
-                .map(|s| s.trim().parse::<u64>().map_err(Error::CouldNotParseNumber))
+                .map(|s| s.trim().parse::<u32>().map_err(Error::CouldNotParseNumber))
                 .collect::<Result<Vec<_>>>()?;
 
             if numbers.len() != 3 {
@@ -139,21 +106,20 @@ impl Map {
             let source_start = numbers[1];
             let range = numbers[2];
 
-            let map_range = MapRange::new(destination_start, source_start, range)?;
+            for i in 0..range {
+                let source = source_start + i;
+                let destination = destination_start + i;
 
-            mapped_values.push(map_range);            
+                mapped_values.insert(source, destination);
+            }
         }
 
         Ok((Map { mapped_values }, input))
     }
 
     #[tracing::instrument]
-    fn get_mapped_value(&self, value: u64) -> u64 {
-        self.mapped_values
-            .iter()
-            .find(|map_range| map_range.contains_value(value))
-            .map(|map_range| map_range.map_value(value))
-            .unwrap_or(value)
+    fn get_mapped_value(&self, value: u32) -> u32 {
+        *self.mapped_values.get(&value).unwrap_or(&value)
     }
 }
 
@@ -173,34 +139,50 @@ impl Data {
     #[tracing::instrument]
     fn from_input(input: Input) -> Result<Data> {
         let (seeds, mut input) = Seeds::from_input(input)?;
+        
+        println!("seeds");
 
         input.next()?;
 
         let (seed_to_soil_map, mut input) = Map::from_input(input)?;
 
+        println!("soil");
+
         input.next()?;
 
         let (soil_to_fertilizer_map, mut input) = Map::from_input(input)?;
+
+        println!("fertilizer");
 
         input.next()?;
 
         let (fertilizer_to_water_map, mut input) = Map::from_input(input)?;
 
+        println!("water");
+
         input.next()?;
 
         let (water_to_light_map, mut input) = Map::from_input(input)?;
+
+        println!("light");
 
         input.next()?;
 
         let (light_to_temperature_map, mut input) = Map::from_input(input)?;
 
+        println!("temperature");
+
         input.next()?;
 
         let (temparure_to_humity_map, mut input) = Map::from_input(input)?;
 
+        println!("humidity");
+
         input.next()?;
 
         let (humidity_to_location_map, _) = Map::from_input(input)?;
+
+        println!("location");
 
         Ok(Data {
             seeds,
@@ -220,20 +202,26 @@ impl Data {
     }
 
     #[tracing::instrument]
-    fn map_seed(&self, seed: u64) -> u64 {
+    fn map_seed(&self, seed: u32) -> u32 {
         let soil = self.seed_to_soil_map.get_mapped_value(seed);
         let fertilizer = self.soil_to_fertilizer_map.get_mapped_value(soil);
         let water = self.fertilizer_to_water_map.get_mapped_value(fertilizer);
         let light = self.water_to_light_map.get_mapped_value(water);
         let temperature = self.light_to_temperature_map.get_mapped_value(light);
         let humidity = self.temparure_to_humity_map.get_mapped_value(temperature);
+        let location = self.humidity_to_location_map.get_mapped_value(humidity);
 
-        self.humidity_to_location_map.get_mapped_value(humidity)
+        // println!(
+        //     "{} {} {} {} {} {} {} {}",
+        //     seed, soil, fertilizer, water, light, temperature, humidity, location
+        // );
+
+        location
     }
 }
 
 #[tracing::instrument]
-pub fn process(input: &str) -> miette::Result<u64> {
+pub fn process(input: &str) -> miette::Result<u32> {
     let input = Input::from_str(input)?;
 
     let data = Data::from_input(input)?;
