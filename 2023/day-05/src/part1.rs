@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 use crate::{error::Error, prelude::*};
 
 #[derive(Debug, Clone, PartialEq, Eq)]
