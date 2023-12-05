@@ -104,13 +104,13 @@ impl MapRange {
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 struct Map {
-    mapped_values: Vec<MapRange>,
+    mapped_ranges: Vec<MapRange>,
 }
 
 impl Map {
     #[tracing::instrument]
     fn from_input(mut input: Input) -> Result<ParserOutput<Map>> {
-        let mut mapped_values = Vec::new();
+        let mut mapped_ranges = Vec::new();
 
         if !input.next()?.ends_with("map:") {
             return Err(Error::CannotFindMapHeader);
@@ -139,15 +139,15 @@ impl Map {
 
             let map_range = MapRange::new(destination_start, source_start, range)?;
 
-            mapped_values.push(map_range);            
+            mapped_ranges.push(map_range);            
         }
 
-        Ok((Map { mapped_values }, input))
+        Ok((Map { mapped_ranges }, input))
     }
 
     #[tracing::instrument]
     fn get_mapped_value(&self, value: u64) -> u64 {
-        self.mapped_values
+        self.mapped_ranges
             .iter()
             .find(|map_range| map_range.contains_value(value))
             .map(|map_range| map_range.map_value(value))
