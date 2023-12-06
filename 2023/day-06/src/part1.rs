@@ -4,18 +4,18 @@ use crate::{error::Error, prelude::*};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 struct Race {
-    time: u32,
-    distance: u32,
+    time: u64,
+    distance: u64,
 }
 
 #[tracing::instrument]
-fn numbers_from_line(input: &str) -> Result<Vec<u32>> {
+fn numbers_from_line(input: &str) -> Result<Vec<u64>> {
     let colon_split: Vec<&str> = input.split(": ").collect();
 
     colon_split[1]
         .split(' ')
         .filter(|s| !s.is_empty())
-        .map(|s| s.parse::<u32>().map_err(Error::CouldNotParseNumber))
+        .map(|s| s.parse::<u64>().map_err(Error::CouldNotParseNumber))
         .collect()
 }
 
@@ -42,21 +42,21 @@ fn input_to_races(input: &str) -> Result<Vec<Race>> {
 }
 
 #[tracing::instrument]
-fn calculate_max_distance_for_time(press_down_time: u32, max_time: u32) -> u32 {
+fn calculate_max_distance_for_time(press_down_time: u64, max_time: u64) -> u64 {
     let time_remaining = max_time - press_down_time;
     time_remaining * press_down_time
 }
 
 #[tracing::instrument]
-fn number_of_ways_to_beat_race(race: &Race) -> u32 {
+fn number_of_ways_to_beat_race(race: &Race) -> u64 {
     (0..race.time)
         .map(|t| calculate_max_distance_for_time(t, race.time))
         .filter(|t| t > &race.distance)
-        .count() as u32
+        .count() as u64
 }
 
 #[tracing::instrument]
-pub fn process(input: &str) -> miette::Result<u32> {
+pub fn process(input: &str) -> miette::Result<u64> {
     let races = input_to_races(input)?;
 
     Ok(races.iter().map(number_of_ways_to_beat_race).product())
