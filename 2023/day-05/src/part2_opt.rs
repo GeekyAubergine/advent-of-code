@@ -639,18 +639,18 @@ mod tests {
     //     Ok(())
     // }
 
-    // #[test]
-    // fn test_process() -> miette::Result<()> {
-    //     let input = include_str!("../example1.txt");
-    //     assert_eq!(process(input)?, 46);
-    //     // assert_eq!(463, process(input)?);
-    //     Ok(())
-    // }
+    #[test]
+    fn test_process() -> miette::Result<()> {
+        let input = include_str!("../example1.txt");
+        assert_eq!(process(input)?, 46);
+        // assert_eq!(463, process(input)?);
+        Ok(())
+    }
 
-    // #[test]
-    // fn it_should_be_correct_for_real_data() -> miette::Result<()> {
-    //     let input = include_str!("../input2.txt");
-    //     assert_eq!(process(input)?, 56931769);
-    //     Ok(())
-    // }
+    #[test]
+    fn it_should_be_correct_for_real_data() -> miette::Result<()> {
+        let input = include_str!("../input2.txt");
+        assert_eq!(process(input)?, 56931769);
+        Ok(())
+    }
 }
