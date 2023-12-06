@@ -1,5 +1,3 @@
-use rayon::vec;
-
 use crate::{error::Error, prelude::*};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
