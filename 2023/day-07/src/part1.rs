@@ -107,6 +107,7 @@ impl Hand {
     #[tracing::instrument]
     fn new(cards: [Card; 5]) -> Result<Self> {
         let hand_type = HandType::from_cards(&cards)?;
+        
         Ok(Self { cards, hand_type })
     }
 
