@@ -3,7 +3,7 @@ work day part:
 work-no-bench day part:
     cargo watch -c -C {{day}} -x "check -p {{day}}" -s "just test {{part}} -p {{day}}" -s "just lint {{day}}" -s "cargo run -p {{day}} --bin {{part}}" 
 lint day:
-    clippy-tracing --action check --exclude target --exclude benches
+    # clippy-tracing --action check --exclude target --exclude benches
     cargo clippy -p {{day}}
 test part +FLAGS='-p day-01':
     cargo nextest run {{FLAGS}} {{part}}
