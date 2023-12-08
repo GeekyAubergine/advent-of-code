@@ -1,0 +1,4 @@
+day_08    fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1  day_08    fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1  356.2 µs      │ 405.9 µs      │ 373.9 µs      │ 374.7 µs      │ 100     │ 100
+
