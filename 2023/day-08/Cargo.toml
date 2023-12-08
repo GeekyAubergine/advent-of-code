@@ -14,6 +14,7 @@ miette = { workspace = true }
 thiserror = { workspace = true }
 rayon = { workspace = true }
 regex = { workspace = true }
+gcd = { workspace = true }
 
 [dev-dependencies]
 divan = { workspace = true }

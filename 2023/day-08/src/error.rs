@@ -21,4 +21,10 @@ pub enum Error {
     NoInstructionsFound,
     #[error("Unexpected instruction {0}")]
     UnexpectedInstruction(String),
+    #[error("Unexpected end of instructions")]
+    UnexpectedEndOfInstructions,
+    #[error("Unknown number of min steps")]
+    UnknownNumberOfMinSteps,
+    #[error("Unknown number of max steps")]
+    UnknownNumberOfMaxSteps,
 }
