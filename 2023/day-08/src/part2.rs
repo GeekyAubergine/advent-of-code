@@ -235,8 +235,6 @@ pub fn process(input: &str) -> Result<u64> {
         .map(|n| steps_to_next_ending_in_z(&map, *n, input.clone()))
         .collect::<Result<Vec<_>>>()?;
 
-    dbg!(&distances_to_next_z);
-
     let lcm: u64 = lcm(&distances_to_next_z);
 
     Ok(lcm)

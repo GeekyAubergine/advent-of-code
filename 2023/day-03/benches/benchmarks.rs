@@ -28,11 +28,3 @@ fn part1_opt() {
     )))
     .unwrap();
 }
-
-// #[divan::bench]
-// fn part2_opt() {
-//     part2_opt::process(divan::black_box(include_str!(
-//         "../input2.txt",
-//     )))
-//     .unwrap();
-// }
