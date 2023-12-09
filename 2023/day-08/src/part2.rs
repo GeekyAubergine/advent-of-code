@@ -181,17 +181,6 @@ fn get_next_node(map: &Map, node: u32, mut input: Input) -> Result<(u32, Input)>
 }
 
 #[tracing::instrument]
-fn progress_node(map: &Map, mut node: u32, mut input: Input, steps: u32) -> Result<u32> {
-    for _ in 0..steps {
-        let (next_node, next_input) = get_next_node(map, node, input)?;
-        input = next_input;
-        node = next_node;
-    }
-
-    Ok(node)
-}
-
-#[tracing::instrument]
 fn steps_to_next_ending_in_z(map: &Map, node: u32, mut input: Input) -> Result<u64> {
     let mut steps = 0;
     let mut current_node = node;
@@ -245,6 +234,8 @@ pub fn process(input: &str) -> Result<u64> {
         .par_iter()
         .map(|n| steps_to_next_ending_in_z(&map, *n, input.clone()))
         .collect::<Result<Vec<_>>>()?;
+
+    dbg!(&distances_to_next_z);
 
     let lcm: u64 = lcm(&distances_to_next_z);
 
