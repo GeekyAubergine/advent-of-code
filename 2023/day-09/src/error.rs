@@ -11,4 +11,6 @@ pub enum Error {
     CouldNotGetBottomRowOfValues,
     #[error("Could not get last value of row {0}")]
     CouldNotGetLastValueOfRow(usize),
+    #[error("Could not get first value of row {0}")]
+    CouldNotGetFirstValueOfRow(usize),
 }

@@ -6,3 +6,6 @@ day_09        fastest       │ slowest       │ median        │ mean        
 ╰─ part1_opt  day_09    fastest       │ slowest       │ median        │ mean          │ samples │ iters
 ╰─ part1  371.4 µs      │ 865.9 µs      │ 482.9 µs      │ 515 µs        │ 100     │ 100
 
+day_09    fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1  303.7 µs      │ 424.6 µs      │ 321.9 µs      │ 329.1 µs      │ 100     │ 100
+
