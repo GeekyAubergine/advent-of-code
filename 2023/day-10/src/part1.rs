@@ -284,61 +284,61 @@ mod tests {
     fn it_should_give_correct_exit_direction_for_pipe_based_on_entry_direction(
     ) -> miette::Result<()> {
         assert_eq!(
+            Pipe::Vertical.exit_direction(&Direction::Up),
             Some(Direction::Up),
-            Pipe::Vertical.exit_direction(&Direction::Up)
         );
         assert_eq!(
+            Pipe::Vertical.exit_direction(&Direction::Down),
             Some(Direction::Down),
-            Pipe::Vertical.exit_direction(&Direction::Down)
         );
 
         assert_eq!(
+            Pipe::Horizontal.exit_direction(&Direction::Right),
             Some(Direction::Right),
-            Pipe::Horizontal.exit_direction(&Direction::Right)
         );
         assert_eq!(
+            Pipe::Horizontal.exit_direction(&Direction::Left),
             Some(Direction::Left),
-            Pipe::Horizontal.exit_direction(&Direction::Left)
         );
 
         // L
         assert_eq!(
+            Pipe::L.exit_direction(&Direction::Down),
             Some(Direction::Right),
-            Pipe::L.exit_direction(&Direction::Down)
         );
         assert_eq!(
+            Pipe::L.exit_direction(&Direction::Left),
             Some(Direction::Up),
-            Pipe::L.exit_direction(&Direction::Left)
         );
 
         // J
         assert_eq!(
+            Pipe::J.exit_direction(&Direction::Down),
             Some(Direction::Left),
-            Pipe::J.exit_direction(&Direction::Down)
         );
         assert_eq!(
+            Pipe::J.exit_direction(&Direction::Right),
             Some(Direction::Up),
-            Pipe::J.exit_direction(&Direction::Right)
         );
 
         // F
         assert_eq!(
+            Pipe::F.exit_direction(&Direction::Up),
             Some(Direction::Right),
-            Pipe::F.exit_direction(&Direction::Up)
         );
         assert_eq!(
+            Pipe::F.exit_direction(&Direction::Left),
             Some(Direction::Down),
-            Pipe::F.exit_direction(&Direction::Left)
         );
 
         // 7
         assert_eq!(
+            Pipe::Seven.exit_direction(&Direction::Up),
             Some(Direction::Left),
-            Pipe::Seven.exit_direction(&Direction::Up)
         );
         assert_eq!(
+            Pipe::Seven.exit_direction(&Direction::Right),
             Some(Direction::Down),
-            Pipe::Seven.exit_direction(&Direction::Right)
         );
         Ok(())
     }
@@ -394,7 +394,7 @@ mod tests {
 
         let map = PipeMap::from_str(input)?;
 
-        assert_eq!(expected, map);
+        assert_eq!(map, expected);
 
         Ok(())
     }
@@ -402,36 +402,36 @@ mod tests {
     #[test]
     fn test_process() -> miette::Result<()> {
         assert_eq!(
-            4,
             process(
                 ".....
                 .S-7.
                 .|.|.
                 .L-J.
                 ....."
-            )?
+            )?,
+            4,
         );
 
         assert_eq!(
-            4,
             process(
                 "-L|F7
                 7S-7|
                 L|7||
                 -L-J|
                 L|-JF"
-            )?
+            )?,
+            4,
         );
 
         assert_eq!(
-            8,
             process(
                 "..F7.
-        .FJ|.
-        SJ.L7
-        |F--J
-        LJ..."
-            )?
+                .FJ|.
+                SJ.L7
+                |F--J
+                LJ..."
+            )?,
+            8,
         );
         Ok(())
     }
@@ -440,7 +440,7 @@ mod tests {
     fn it_should_not_fail_on_data() -> miette::Result<()> {
         let input = include_str!("../input1.txt");
 
-        assert_ne!(51, process(input)?);
+        assert_ne!( process(input)?, 51);
 
         Ok(())
     }
