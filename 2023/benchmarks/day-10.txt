@@ -1,0 +1,18 @@
+day_10    fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1  393.1 µs      │ 505 µs        │ 411.4 µs      │ 412.8 µs      │ 100     │ 100
+
+day_10    fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1  397 µs        │ 500 µs        │ 412.2 µs      │ 416.5 µs      │ 100     │ 100
+
+day_10    fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1  393.5 µs      │ 471.1 µs      │ 411.4 µs      │ 412.6 µs      │ 100     │ 100
+
+day_10    fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1  382.5 µs      │ 469.9 µs      │ 397.9 µs      │ 403.3 µs      │ 100     │ 100
+
+day_10    fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1  385 µs        │ 487.4 µs      │ 404.2 µs      │ 407.6 µs      │ 100     │ 100
+
+day_10    fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1  385.5 µs      │ 539.5 µs      │ 405.2 µs      │ 410.5 µs      │ 100     │ 100
+
