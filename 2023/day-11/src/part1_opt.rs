@@ -123,14 +123,6 @@ impl Galaxy {
     }
 }
 
-#[tracing::instrument]
-fn galaxy_distance_hash_id(galaxy_a: u16, galaxy_b: u16) -> u32 {
-    let min = galaxy_a.min(galaxy_b);
-    let max = galaxy_a.max(galaxy_b);
-
-    (min as u32) << 16 | (max as u32)
-}
-
 #[derive(Debug, Clone, PartialEq)]
 struct GalaxyMap {
     galaxies: HashMap<u16, Galaxy>,
