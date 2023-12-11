@@ -1,6 +1,80 @@
+day_11    fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1  43.84 ms      │ 46.79 ms      │ 45.13 ms      │ 45.14 ms      │ 100     │ 100
+
+day_11    fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1  day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+├─ part1      43.06 ms      │ 70.4 ms       │ 43.99 ms      │ 44.62 ms      │ 100     │ 100
+╰─ part1_opt  day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  43.07 ms      │ 79.34 ms      │ 44.63 ms      │ 45.24 ms      │ 100     │ 100
+
 day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
-├─ part1      day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
-├─ part1      day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
-├─ part1      day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
-├─ part1      day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
-├─ part1      
+╰─ part1_opt  43.8 ms       │ 54.2 ms       │ 45.79 ms      │ 45.85 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  43.12 ms      │ 46.98 ms      │ 45.16 ms      │ 44.95 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  adding galaxy at 40, 0 2 0
+
+46.51 ms      │ 52.06 ms      │ 48.95 ms      │ 49.09 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  46.94 ms      │ 53.76 ms      │ 48.17 ms      │ 48.31 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  44.21 ms      │ 67.7 ms       │ 45.92 ms      │ 46.26 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  45.75 ms      │ 177.4 ms      │ 47.95 ms      │ 59.14 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  44.18 ms      │ 62.33 ms      │ 45.93 ms      │ 46.07 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  44.01 ms      │ 50.45 ms      │ 45.94 ms      │ 45.87 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  7.909 ms      │ 26.44 ms      │ 8.646 ms      │ 9.05 ms       │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  8.275 ms      │ 16.89 ms      │ 8.877 ms      │ 9.107 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  8.022 ms      │ 28.65 ms      │ 8.65 ms       │ 9.042 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  8.046 ms      │ 17.48 ms      │ 8.716 ms      │ 8.98 ms       │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  8.184 ms      │ 13.12 ms      │ 8.797 ms      │ 8.905 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  8.118 ms      │ 18.69 ms      │ 8.767 ms      │ 8.964 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  6.401 ms      │ 14 ms         │ 7.191 ms      │ 7.432 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  6.578 ms      │ 9.157 ms      │ 7.217 ms      │ 7.278 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  1.98 ms       │ 4.784 ms      │ 2.508 ms      │ 2.609 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  2.079 ms      │ 3.154 ms      │ 2.547 ms      │ 2.549 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  2.003 ms      │ 3.151 ms      │ 2.514 ms      │ 2.444 ms      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  600.4 µs      │ 1.67 ms       │ 746.9 µs      │ 801 µs        │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  601 µs        │ 1.156 ms      │ 767.7 µs      │ 785.7 µs      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  612.6 µs      │ 1.126 ms      │ 767.6 µs      │ 789.1 µs      │ 100     │ 100
+
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+╰─ part1_opt  653.2 µs      │ 1.044 ms      │ 739 µs        │ 761.8 µs      │ 100     │ 100
+
