@@ -24,6 +24,7 @@ regex = "1.10.2"
 pretty_assertions = "1.4.0"
 memoize = "0.4.1"
 gcd = "2.3.0"
+colored = "2.1.0"
 
 [profile.flamegraph]
 inherits = "release"
