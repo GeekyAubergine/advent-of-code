@@ -1,4 +1,4 @@
-use {{crate_name}}::part1::process;
+use day_11::part1::process;
 use miette::Context;
 
 #[tracing::instrument]

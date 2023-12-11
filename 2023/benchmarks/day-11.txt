@@ -1,0 +1,6 @@
+day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+├─ part1      day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+├─ part1      day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+├─ part1      day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+├─ part1      day_11        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+├─ part1      
