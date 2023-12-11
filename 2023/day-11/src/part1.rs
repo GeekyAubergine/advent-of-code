@@ -104,16 +104,10 @@ impl Galaxy {
 
     #[tracing::instrument]
     fn distance(&self, other: &Self) -> f32 {
-        let line = Line {
-            start_x: self.x,
-            start_y: self.y,
-            end_x: other.x,
-            end_y: other.y,
-        };
         let mut distance = 0.0;
 
-        let mut x = line.start_x;
-        let mut y = line.start_y;
+        let mut x = self.x;
+        let mut y = self.y;
 
         while x != other.x || y != other.y {
             let dx = other.x - x;
